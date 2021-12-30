@@ -1,0 +1,17 @@
+# dependencies
+node_modules/
+yarn.lock
+yarn-error.log
+package-lock.json
+
+# production
+dist/
+
+# env
+.env
+.env.dev
+.env.local
+.env.test
+
+# log
+*.log*

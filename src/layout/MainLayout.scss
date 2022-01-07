@@ -1,0 +1,63 @@
+@import '/src/assets/scss/utils.scss';
+
+.main-layout-wrapper {
+  height: 100vh;
+
+  .main-layout-inner {
+    height: inherit;
+
+    .header-layout-wrapper {
+      height: 50px;
+      @include flex(center, center);
+      gap: 20px;
+      border-bottom: 1px solid #000;
+
+      .link-item {
+        font-weight: bold;
+        font-size: 13px;
+        color: #bbc0c4;
+
+        img {
+          height: fit-content;
+          width: 35px;
+          border-radius: 100%;
+          padding: 5px;
+          border: 1px solid transparent;
+        }
+
+        &.active {
+          color: #6875ed;
+
+          img {
+            border: 1px solid #6875ed;
+          }
+        }
+      }
+    }
+    .contents-inner {
+      padding: 40px 0;
+
+      .page .page-title {
+        margin-bottom: 40px;
+      }
+    }
+
+    .footer-layout-wrapper {
+      height: 100px;
+      background-color: #111111;
+      font-family: serif;
+      font-size: 11px;
+      @include flex(flex-start, center);
+
+      .copyright {
+        color: #bbc0c4;
+        font-weight: bold;
+        padding-bottom: 10px;
+      }
+
+      .author-info {
+        color: #848d95;
+      }
+    }
+  }
+}

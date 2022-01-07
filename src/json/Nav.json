@@ -1,0 +1,17 @@
+[
+  {
+    "label": "Home",
+    "path": "/",
+    "nameKo": "홈"
+  },
+  {
+    "label": "Slider",
+    "path": "slider",
+    "nameKo": "슬라이더"
+  },
+  {
+    "label": "DropMenu",
+    "path": "dropmenu",
+    "nameKo": "드롭 메뉴"
+  }
+]

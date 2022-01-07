@@ -1,0 +1,131 @@
+* {
+  margin: 0;
+  padding: 0;
+  outline: none;
+
+  /* scrollbar */
+  ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+  ::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #c5c6ca;
+    border-radius: 25px 25px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #c5c6ca;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  vertical-align: bottom;
+}
+
+@mixin fontF {
+  font-family: 'MalgunGothic', sans-serif !important;
+  font-variant-ligatures: normal;
+  font-variant-caps: normal;
+  font-variant-numeric: normal;
+  font-variant-east-asian: normal;
+  font-stretch: normal;
+}
+
+body {
+  @include fontF;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #191919;
+  overflow-x: hidden;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+form {
+  display: block;
+}
+
+@mixin no-outline {
+  &,
+  &:active,
+  &:focus {
+    outline: none;
+  }
+}
+
+a {
+  @include no-outline;
+  display: block;
+  text-decoration: none;
+}
+
+i {
+  display: inline-block;
+}
+
+input {
+  @include no-outline;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  border: none;
+}
+
+input[type='checkbox'] {
+  cursor: pointer;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+textarea {
+  @include fontF;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  resize: none;
+  outline: none;
+  overflow-wrap: break-word;
+  overflow: auto;
+  border: 1px solid #dfdfdf;
+}
+
+button {
+  @include no-outline;
+  @include fontF;
+  border: none;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  background-color: initial;
+  line-height: 0;
+}
+
+img {
+  border: 0;
+}
+
+ul,
+li {
+  list-style-type: none;
+}
+
+.ReactVirtualized__Grid__innerScrollContainer {
+  overflow: initial !important;
+}
+
+.ReactVirtualized__Grid {
+  overflow: overlay !important;
+}

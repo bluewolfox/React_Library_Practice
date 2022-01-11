@@ -35,6 +35,7 @@
       }
     }
     .contents-inner {
+      min-height: calc(100vh - 150px);
       padding: 40px 0;
 
       .page .page-title {

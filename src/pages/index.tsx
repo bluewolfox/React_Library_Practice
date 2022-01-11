@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { DropMenu, Slider } from '../components';
 
 export const MainPage: React.FC = (): JSX.Element => {
@@ -25,12 +26,24 @@ export const SliderPage: React.FC = (): JSX.Element => {
 };
 
 export const DropDownPage: React.FC = (): JSX.Element => {
+  const DropMenuItem: React.FC<{ closeHandler: () => void }> = ({ closeHandler }) => (
+    <>
+      <div onClick={closeHandler}>메뉴1</div>
+      <div>메뉴2</div>
+      <div>메뉴3</div>
+      <div>메뉴4</div>
+      <div className="local-calss">abc</div>
+    </>
+  );
+
   return (
     <div className="page">
-      <h1 className="page-title">Dropdown</h1>
       <div className="center">
-        <DropMenu>
-          <div
+        <h1 className="page-title">Dropdown</h1>
+        <DropMenu content={({ closeHandler }) => <DropMenuItem closeHandler={closeHandler} />}>
+          <Link
+            to="/"
+            className="local-class"
             style={{
               height: 45,
               padding: '0 20px',
@@ -42,7 +55,7 @@ export const DropDownPage: React.FC = (): JSX.Element => {
             }}
           >
             나는 메뉴
-          </div>
+          </Link>
         </DropMenu>
       </div>
     </div>

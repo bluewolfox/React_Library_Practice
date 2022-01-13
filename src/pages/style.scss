@@ -1,0 +1,9 @@
+@import '/src/assets/scss/utils.scss';
+
+.btn-alert {
+  @include flex(center, center);
+  height: 35px;
+  padding: 0 15px;
+  font-size: 12px;
+  background: #f1f1f1;
+}

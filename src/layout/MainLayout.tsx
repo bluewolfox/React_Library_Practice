@@ -3,6 +3,7 @@ import { NavLink, Outlet } from 'react-router-dom';
 import Nav from '../json/Nav.json';
 import './MainLayout.scss';
 import LOGO from '../assets/img/logo.png';
+import { Alert } from '../components';
 
 const MainLayout: React.FC = (): JSX.Element => {
   return (
@@ -21,7 +22,9 @@ const MainLayout: React.FC = (): JSX.Element => {
           })}
         </div>
         <div className="contents-inner">
-          <Outlet />
+          <div className="center">
+            <Outlet />
+          </div>
         </div>
         <div className="footer-layout-wrapper">
           <div className="center">

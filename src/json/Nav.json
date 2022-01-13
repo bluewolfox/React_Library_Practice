@@ -13,5 +13,10 @@
     "label": "DropMenu",
     "path": "dropmenu",
     "nameKo": "드롭 메뉴"
+  },
+  {
+    "label": "Alert",
+    "path": "alert",
+    "nameKo": "알림"
   }
 ]

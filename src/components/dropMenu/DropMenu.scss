@@ -3,19 +3,9 @@
 .drop-contents-wrapper {
   position: absolute;
 
-  * {
+  .blwf-drop-contents {
     @include flex(flex-start, center);
-    padding: 0 10px;
-    font-size: 12px;
-    font-weight: bold;
-    background-color: #eeeeee;
-    color: #333333;
-    height: 30px;
-    border-bottom: 1px solid #d1d1d1;
-    cursor: pointer;
-
-    &:last-child {
-      border-bottom: none;
-    }
+    flex-wrap: wrap;
   }
 }
+

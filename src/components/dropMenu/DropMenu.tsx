@@ -12,9 +12,11 @@ interface ContProps {
 }
 const DropContents: React.FC<ContProps> = ({ children, setToggle }): JSX.Element => {
   const CONTENT = children({ closeHandler: () => setToggle(false) });
+  const PEELED_CONTENT = ((): JSX.Element =>
+    typeof CONTENT.type === 'function' ? CONTENT.type(CONTENT.props) : CONTENT)();
 
   const CHILDREN = useMemo(() => {
-    return React.Children.map(CONTENT, (child) => {
+    return React.Children.map(PEELED_CONTENT, (child) => {
       const { className, onClick } = child.props;
 
       return React.cloneElement(child, {
@@ -36,7 +38,7 @@ interface DropProps {
   content: Content;
 }
 export const DropMenu: React.FC<DropProps> = ({ children, content }): JSX.Element => {
-  const Root = document.querySelector('#blwf-root') as HTMLDivElement;
+  const Root = document.body.children.item(1) as HTMLDivElement;
   const targetRef = useRef<HTMLDivElement>(null);
   const ContentStandard = useMemo(() => document.createElement('div'), []);
   const [toggle, setToggle] = useState(false);
@@ -96,7 +98,7 @@ export const DropMenu: React.FC<DropProps> = ({ children, content }): JSX.Elemen
 
     if (toggle) {
       Root.appendChild(ContentStandard);
-      document.addEventListener('mousemove', onDebounceMouseHandler);
+      // document.addEventListener('mousemove', onDebounceMouseHandler);
     } else {
       document.removeEventListener('mousemove', onDebounceMouseHandler);
 
@@ -122,7 +124,7 @@ export const DropMenu: React.FC<DropProps> = ({ children, content }): JSX.Elemen
         if (onClick) onClick();
       },
       onMouseOver: () => !toggle && setToggle(true),
-      onMouseOut: () => toggle && setToggle(false),
+      // onMouseOut: () => toggle && setToggle(false),
     });
 
     // eslint-disable-next-line react-hooks/exhaustive-deps

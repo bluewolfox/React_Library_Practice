@@ -12,9 +12,11 @@ interface ContProps {
 }
 const DropContents: React.FC<ContProps> = ({ children, setToggle }): JSX.Element => {
   const CONTENT = children({ closeHandler: () => setToggle(false) });
+  const PEELED_CONTENT = ((): JSX.Element =>
+    typeof CONTENT.type === 'function' ? CONTENT.type(CONTENT.props) : CONTENT)();
 
   const CHILDREN = useMemo(() => {
-    return React.Children.map(CONTENT, (child) => {
+    return React.Children.map(PEELED_CONTENT, (child) => {
       const { className, onClick } = child.props;
 
       return React.cloneElement(child, {

@@ -1,6 +1,9 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { DropMenu, Slider } from '../components';
+import { Alert, DropMenu, Slider } from '../components';
+import { alertActions } from '../store/actions';
+import './style.scss';
 
 export const MainPage: React.FC = (): JSX.Element => {
   return <div className="page">메인</div>;
@@ -27,13 +30,13 @@ export const SliderPage: React.FC = (): JSX.Element => {
 
 export const DropDownPage: React.FC = (): JSX.Element => {
   const DropMenuItem: React.FC<{ closeHandler: () => void }> = ({ closeHandler }) => (
-    <>
+    <div className="test">
       <div onClick={closeHandler}>메뉴1</div>
       <div>메뉴2</div>
       <div>메뉴3</div>
       <div>메뉴4</div>
       <div className="local-calss">abc</div>
-    </>
+    </div>
   );
 
   return (
@@ -58,6 +61,43 @@ export const DropDownPage: React.FC = (): JSX.Element => {
           </Link>
         </DropMenu>
       </div>
+    </div>
+  );
+};
+
+export const AlertPage: React.FC = (): JSX.Element => {
+  const dispatch = useDispatch();
+
+  return (
+    <div className="page">
+      <Alert position="center-bottom" classNames="local-class">
+        <div className="center">
+          <h1 className="page-title">Alert</h1>
+          <button
+            onClick={() => dispatch(alertActions.add({ msg: '경고 world', type: 'warn' }))}
+            type="button"
+            className="btn-alert warning"
+            style={{ marginBottom: 10 }}
+          >
+            경고알림창
+          </button>
+          <button
+            onClick={() => dispatch(alertActions.add({ msg: '성공 world', type: 'success' }))}
+            type="button"
+            className="btn-alert "
+            style={{ marginBottom: 10 }}
+          >
+            성공알림창
+          </button>
+          <button
+            onClick={() => dispatch(alertActions.add({ msg: '실패 world', type: 'err' }))}
+            type="button"
+            className="btn-alert failed"
+          >
+            실패알림창
+          </button>
+        </div>
+      </Alert>
     </div>
   );
 };

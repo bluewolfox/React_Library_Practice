@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Alert, DropMenu, Slider } from '../components';
+import { Alert, DropMenu, Slider, Table } from '../components';
 import { alertActions } from '../store/actions';
 import './style.scss';
 
@@ -98,6 +98,77 @@ export const AlertPage: React.FC = (): JSX.Element => {
           </button>
         </div>
       </Alert>
+    </div>
+  );
+};
+
+const Header = [
+  {
+    key: 'title',
+    label: '타이틀',
+    width: 100,
+    maxWidth: 100,
+    minWidth: 100,
+    noTitle: true,
+  },
+  {
+    key: 'location_type',
+    label: '타입',
+    width: 100,
+    maxWidth: 100,
+    minWidth: 100,
+    noTitle: true,
+  },
+  {
+    key: 'woeid',
+    label: '지역ID',
+    width: 100,
+    maxWidth: 100,
+    minWidth: 100,
+    noTitle: true,
+  },
+  {
+    key: 'latt_long',
+    label: '위도경도',
+    width: 100,
+    minWidth: 100,
+  },
+];
+
+export const TablePage: React.FC = (): JSX.Element => {
+  const [dummyData, setDummyData] = useState([]);
+
+  useEffect(() => {
+    fetch('https://www.metaweather.com/api/location/search/?query=san')
+      .then((response) => {
+        return response.json();
+      })
+      .then((result) => {
+        setDummyData(result);
+      });
+  }, []);
+
+  return (
+    <div className="page">
+      <div className="center">
+        <h1 className="page-title">Table</h1>
+        <Table.Container header={Header} data={dummyData}>
+          <Table.THead>{({ label }) => label}</Table.THead>
+          <Table.TBody>
+            {({ index, item }) => {
+              return (
+                <Table.TR key={index} item={item}>
+                  {({ value, column }) => {
+                    if (column.key === 'woeid') return 'id';
+
+                    return value;
+                  }}
+                </Table.TR>
+              );
+            }}
+          </Table.TBody>
+        </Table.Container>
+      </div>
     </div>
   );
 };

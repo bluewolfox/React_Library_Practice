@@ -1,0 +1,52 @@
+@import '/src/assets/scss/utils.scss';
+
+@mixin values {
+  @include ellipsis;
+  display: block;
+}
+
+@mixin standard {
+  width: 100%;
+  font-size: 12px;
+  flex: 1 1 auto;
+  padding: 0 15px;
+  @include flex(flex-start, center);
+}
+
+.blwf-table-layout-wrapper {
+  position: relative;
+
+  .table-header-layout {
+    @include flex(flex-start, center);
+    background-color: #333333;
+
+    .th-cell {
+      @include standard;
+      height: 40px;
+      border-right: 1px solid #525252;
+
+      .values {
+        @include values;
+        color: #ffffff;
+      }
+    }
+  }
+
+  .table-body-layout {
+    .tbody-row {
+      @include flex(flex-start, center);
+      border-bottom: 1px solid #525252;
+      width: 100%;
+
+      .td-cell {
+        @include standard;
+        height: 35px;
+        border-right: 1px solid #525252;
+
+        .values {
+          @include values;
+        }
+      }
+    }
+  }
+}

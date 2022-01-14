@@ -18,5 +18,10 @@
     "label": "Alert",
     "path": "alert",
     "nameKo": "알림"
+  },
+  {
+    "label": "Table",
+    "path": "table",
+    "nameKo": "테이블"
   }
 ]

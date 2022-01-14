@@ -47,7 +47,6 @@ export const setPosition: PositionModule = ({ alertRoot, rootClass, position, ta
     }
   } else {
     const targetRect = target.getBoundingClientRect();
-    console.log(targetRect);
 
     const t_left = targetRect.x;
     const t_right = targetRect.x + targetRect.width;
@@ -64,7 +63,7 @@ export const setPosition: PositionModule = ({ alertRoot, rootClass, position, ta
         }
         case 'center-bottom': {
           alertRoot.style.left = `50%`;
-          alertRoot.style.top = `${t_top}px`;
+          alertRoot.style.top = `${t_bottom}px`;
           alertRoot.style.transform = `translateX(-50%)`;
           break;
         }

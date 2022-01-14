@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import MainLayout from '../layout/MainLayout';
-import { DropDownPage, MainPage, SliderPage, AlertPage } from '../pages';
+import { DropDownPage, MainPage, SliderPage, AlertPage, TablePage } from '../pages';
 
 export const Router: React.FC = (): JSX.Element => {
   return (
@@ -12,6 +12,7 @@ export const Router: React.FC = (): JSX.Element => {
           <Route path="slider" element={<SliderPage />} />
           <Route path="dropmenu" element={<DropDownPage />} />
           <Route path="alert" element={<AlertPage />} />
+          <Route path="table" element={<TablePage />} />
         </Route>
       </Routes>
     </BrowserRouter>

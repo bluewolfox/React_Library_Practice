@@ -1,4 +1,4 @@
-@import '/src/assets/scss/utils.scss';
+@import 'assets/scss/utils.scss';
 
 .btn-alert {
   @include flex(center, center);
@@ -6,4 +6,21 @@
   padding: 0 15px;
   font-size: 12px;
   background: #f1f1f1;
+}
+
+.main-wrapper {
+  @include flex(center, center);
+  flex-wrap: wrap;
+  gap: 10px 1%;
+
+  .main-item {
+    flex: 1 1 48%;
+    @include flex(center, center);
+    border-radius: 5px;
+    border: 4px solid #b83c3c;
+    font-size: 30px;
+    font-weight: bold;
+    color: #333333;
+    height: 250px;
+  }
 }

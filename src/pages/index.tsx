@@ -4,9 +4,27 @@ import { Link } from 'react-router-dom';
 import { Alert, DropMenu, Slider, Table } from '../components';
 import { alertActions } from '../store/actions';
 import './style.scss';
+import Nav from '../json/Nav.json';
 
 export const MainPage: React.FC = (): JSX.Element => {
-  return <div className="page">메인</div>;
+  return (
+    <div className="page">
+      <div className="center">
+        <div className="main-wrapper">
+          {Nav.map((item) => {
+            const { path, nameKo } = item;
+            if (path === '/') return '';
+
+            return (
+              <Link className="main-item" to={path} key={path}>
+                {nameKo}
+              </Link>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export const SliderPage: React.FC = (): JSX.Element => {

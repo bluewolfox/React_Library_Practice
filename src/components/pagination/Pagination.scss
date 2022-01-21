@@ -1,0 +1,62 @@
+@import '/src/assets/scss/utils.scss';
+
+@mixin Item {
+  @include flex(center, center);
+  width: 30px;
+  height: 30px;
+  background-color: #e1e1e1;
+  border-radius: 3px;
+  font-size: 12px;
+  cursor: pointer;
+  will-change: background-color;
+  transition: background-color 0.2s;
+
+  &.active {
+    background-color: #969696;
+    color: #ffffff;
+    font-weight: bold;
+
+    &:hover,
+    &:active {
+      background-color: #969696;
+    }
+  }
+  &:hover,
+  &:active {
+    background-color: #c6c6c6;
+  }
+
+  &.disabled {
+    opacity: 0.5;
+    cursor: default;
+
+    &:hover,
+    &:active {
+      background-color: #e1e1e1;
+    }
+  }
+}
+
+.blwf-pag-layout-wrapper {
+  @include flex(center, center);
+  gap: 4px;
+
+  .unit-wrapper {
+    @include flex(center, center);
+    gap: 4px;
+
+    .unit-item {
+      @include Item;
+    }
+  }
+
+  .arrow-wrapper {
+    @include Item;
+    font-size: 11px;
+
+    &.start-status,
+    &.end-status {
+      font-weight: bold;
+    }
+  }
+}

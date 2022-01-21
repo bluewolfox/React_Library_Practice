@@ -98,7 +98,7 @@ export const DropMenu: React.FC<DropProps> = ({ children, content }): JSX.Elemen
 
     if (toggle) {
       Root.appendChild(ContentStandard);
-      // document.addEventListener('mousemove', onDebounceMouseHandler);
+      document.addEventListener('mousemove', onDebounceMouseHandler);
     } else {
       document.removeEventListener('mousemove', onDebounceMouseHandler);
 

@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Alert, DropMenu, Slider, Table } from '../components';
+import { Alert, DropMenu, Pagination, Slider, Table, Tree } from '../components';
 import { alertActions } from '../store/actions';
 import './style.scss';
 import Nav from '../json/Nav.json';
@@ -157,12 +158,12 @@ export const TablePage: React.FC = (): JSX.Element => {
   const [dummyData, setDummyData] = useState([]);
 
   useEffect(() => {
-    fetch('https://www.metaweather.com/api/location/search/?query=san')
+    fetch('https://www.metaweather.com/api/location/44418')
       .then((response) => {
         return response.json();
       })
       .then((result) => {
-        setDummyData(result);
+        setDummyData(result.consolidated_weather);
       });
   }, []);
 
@@ -186,6 +187,52 @@ export const TablePage: React.FC = (): JSX.Element => {
             }}
           </Table.TBody>
         </Table.Container>
+      </div>
+    </div>
+  );
+};
+
+export const PaginationPage: React.FC = (): JSX.Element => {
+  const [pages, setPages] = useState({ totalPage: 0, currentPage: 0 });
+  const [data, setData] = useState<any>({});
+
+  const getUserInfo = (numb?: number) => {
+    fetch(`https://reqres.in/api/users?page=${numb || 1}&per_page=1`)
+      .then((res) => res.json())
+      .then((result) => {
+        setPages({ currentPage: result.page, totalPage: result.total_pages });
+        setData(result.data[0]);
+      });
+  };
+
+  useEffect(() => {
+    getUserInfo();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  return (
+    <div className="page">
+      <div className="center">
+        <h1 className="page-title">Pagination</h1>
+        <div className="contents">
+          <h2>
+            <img src={data.avatar} alt="" />
+            <div className="name">{`${data.first_name} ${data.last_name}`}</div>
+          </h2>
+          <div style={{ marginTop: 10 }}>{`email : ${data.email}`}</div>
+        </div>
+        <Pagination currentPage={pages.currentPage} totalPage={pages.totalPage} display={1} onChange={getUserInfo} />
+      </div>
+    </div>
+  );
+};
+
+export const TreePage: React.FC = (): JSX.Element => {
+  return (
+    <div className="page">
+      <div className="center">
+        <h1 className="page-title">Tree</h1>
+        <Tree />
       </div>
     </div>
   );

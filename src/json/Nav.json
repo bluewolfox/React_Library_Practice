@@ -23,5 +23,15 @@
     "label": "Table",
     "path": "table",
     "nameKo": "테이블"
+  },
+  {
+    "label": "Pagination",
+    "path": "pagination",
+    "nameKo": "페이지네이션"
+  },
+  {
+    "label": "Tree",
+    "path": "tree",
+    "nameKo": "트리구조"
   }
 ]

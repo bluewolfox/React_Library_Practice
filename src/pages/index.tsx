@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Alert, DropMenu, Pagination, Slider, Table, Tree } from '../components';
+import { Alert, AutoTag, Collapse, DropMenu, Pagination, Slider, Table, Tree } from '../components';
 import { alertActions } from '../store/actions';
 import './style.scss';
 import Nav from '../json/Nav.json';
@@ -233,6 +233,45 @@ export const TreePage: React.FC = (): JSX.Element => {
       <div className="center">
         <h1 className="page-title">Tree</h1>
         <Tree />
+      </div>
+    </div>
+  );
+};
+
+export const AutoTagPage: React.FC = (): JSX.Element => {
+  return (
+    <div className="page">
+      <div className="center">
+        <h1 className="page-title">AutoTag</h1>
+        <AutoTag />
+      </div>
+    </div>
+  );
+};
+
+export const CollapsePage: React.FC = (): JSX.Element => {
+  const data = [
+    {
+      head: '저의 이름은',
+      body: '김원석 입니다.',
+    },
+    {
+      head: '저의 나이는',
+      body: '올해 31세 입니다.',
+    },
+    {
+      head: '저의 MBTI는',
+      body: 'ISTJ 입니다.',
+    },
+  ];
+  return (
+    <div className="page">
+      <div className="center">
+        <h1 className="page-title">Collapse</h1>
+        <Collapse.Container data={data}>
+          {/* <Collapse.Header>{({ value }) => value}</Collapse.Header>
+          <Collapse.Body>{({ value }) => value}</Collapse.Body> */}
+        </Collapse.Container>
       </div>
     </div>
   );

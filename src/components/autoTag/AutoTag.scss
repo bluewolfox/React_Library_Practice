@@ -1,0 +1,53 @@
+@import '/src/assets/scss/utils.scss';
+
+.blwf-auto-tag-layout-wrapper {
+  .tag-contet-box {
+    background-color: #f9f9f9;
+    @include flex(flex-start, flex-start);
+    padding: 10px 15px;
+
+    .tags-container {
+      @include flex(flex-start, flex-start);
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-right: 10px;
+      max-width: 100%;
+
+      .egg-item {
+        @include flex(space-between, flex-start);
+        background-color: skyblue;
+        border-radius: 15px;
+        padding: 5px 10px;
+        max-width: 100%;
+
+        .item-value {
+          font-size: 11px;
+          max-width: calc(100% - 15px);
+          @include ellipsis;
+        }
+
+        .item-delete {
+          width: 15px;
+          height: 100%;
+          font-size: 10px;
+          font-weight: bold;
+          vertical-align: middle;
+          text-align: center;
+          cursor: pointer;
+          position: relative;
+        }
+      }
+    }
+
+    .auto-input {
+      background-color: transparent;
+      height: 25px;
+      font-size: 11px;
+
+      &::placeholder {
+        font-size: 11px;
+        color: #aaaaaa;
+      }
+    }
+  }
+}

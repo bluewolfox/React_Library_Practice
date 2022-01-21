@@ -33,5 +33,15 @@
     "label": "Tree",
     "path": "tree",
     "nameKo": "트리구조"
+  },
+  {
+    "label": "AutoTag",
+    "path": "autoTag",
+    "nameKo": "자동태그"
+  },
+  {
+    "label": "Collapse",
+    "path": "collapse",
+    "nameKo": "아코디언"
   }
 ]

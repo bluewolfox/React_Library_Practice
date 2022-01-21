@@ -4,3 +4,5 @@ export { Alert } from './alert/Alert';
 export { Table } from './table/Table';
 export { Pagination } from './pagination/Pagination';
 export { Tree } from './tree/Tree';
+export { AutoTag } from './autoTag/AutoTag';
+export { Collapse } from './collapse/Collapse';

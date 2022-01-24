@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import classNames from 'classnames';
 import { Alert, AutoTag, Collapse, DropMenu, Pagination, Slider, Table, Tree } from '../components';
 import { alertActions } from '../store/actions';
 import './style.scss';
@@ -252,15 +253,24 @@ export const AutoTagPage: React.FC = (): JSX.Element => {
 export const CollapsePage: React.FC = (): JSX.Element => {
   const data = [
     {
-      head: '저의 이름은',
+      head: {
+        msg: '저의 이름은',
+        uqKey: 'name',
+      },
       body: '김원석 입니다.',
     },
     {
-      head: '저의 나이는',
+      head: {
+        msg: '저의 나이는',
+        uqKey: 'age',
+      },
       body: '올해 31세 입니다.',
     },
     {
-      head: '저의 MBTI는',
+      head: {
+        msg: '저의 MBTI는',
+        uqKey: 'mbti',
+      },
       body: 'ISTJ 입니다.',
     },
   ];
@@ -269,8 +279,30 @@ export const CollapsePage: React.FC = (): JSX.Element => {
       <div className="center">
         <h1 className="page-title">Collapse</h1>
         <Collapse.Container data={data}>
-          {/* <Collapse.Header>{({ value }) => value}</Collapse.Header>
-          <Collapse.Body>{({ value }) => value}</Collapse.Body> */}
+          {({ item }) => {
+            const uniqID = `id${Math.random().toString(16).slice(2)}`;
+            return (
+              <Collapse.Row key={uniqID}>
+                {({ expanded, setExpanded }) => {
+                  return (
+                    <>
+                      <Collapse.Header head={item.head} expanded={expanded} setExpanded={setExpanded}>
+                        {({ head }) => (
+                          <>
+                            <div className="custom-class">{head.msg}</div>
+                            <div className="arrow">{expanded ? '⬇' : '⬆'}</div>
+                          </>
+                        )}
+                      </Collapse.Header>
+                      <Collapse.Body body={item.body} expanded={expanded} setExpanded={setExpanded}>
+                        {({ body }) => body}
+                      </Collapse.Body>
+                    </>
+                  );
+                }}
+              </Collapse.Row>
+            );
+          }}
         </Collapse.Container>
       </div>
     </div>

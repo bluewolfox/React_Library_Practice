@@ -1,8 +1,11 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import classNames from 'classnames';
+import React, { createContext, Dispatch, useContext, useEffect, useState } from 'react';
 import { Collapse_Data, types_Collapse } from './collapse.model';
 import './Collapse.scss';
 
-const initialState: { data: Collapse_Data[] } = {
+const initialState: {
+  data: Collapse_Data[];
+} = {
   data: [],
 };
 const CollapseContext = createContext(initialState);
@@ -18,38 +21,28 @@ export const Collapse: types_Collapse = {
         <div className="blwf-collapse-layout">
           <div className="collapse-inner">
             {data.map((item) => {
-              const id = `id${Math.random().toString(16).slice(2)}`;
-              return <Collapse.Row key={id} item={item} />;
+              return children({ item });
             })}
           </div>
         </div>
       </CollapseContext.Provider>
     );
   },
-  Row: ({ children, item }) => {
+  Row: ({ children }) => {
     const [expanded, setExpanded] = useState(false);
-
-    return (
-      <div className="collapse-item">
-        <Collapse.Header head={item.head} expanded={expanded} setExpanded={setExpanded} />
-        <Collapse.Body body={item.body} expanded={expanded} setExpanded={setExpanded} />
-      </div>
-    );
+    return <div className="collapse-item">{children({ expanded, setExpanded })}</div>;
   },
   Header: ({ children, head, expanded, setExpanded }) => {
     return (
-      <div className="head-wrappper">
-        <div className="collapse-head">
-          <div className="value-box">{head}</div>
-          <div className="arrow-box">⬇</div>
-        </div>
+      <div className="head-wrappper" onClick={() => setExpanded((prev) => !prev)}>
+        <div className="collapse-head">{children({ head })}</div>
       </div>
     );
   },
-  Body: ({ children, body, expanded, setExpanded }) => {
+  Body: ({ children, body, expanded }) => {
     return (
-      <div className="body-wrappper">
-        <div className="collapse-body">{body}</div>
+      <div className={classNames('body-wrappper', { active: expanded })}>
+        <div className="collapse-body">{children({ body })}</div>
       </div>
     );
   },

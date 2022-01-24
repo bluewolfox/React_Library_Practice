@@ -92,6 +92,7 @@
     "react/jsx-no-useless-fragment": "off",
     "react/no-unstable-nested-components": "off",
     "no-promise-executor-return": "off",
-    "react/jsx-no-constructed-context-values": "off"
+    "react/jsx-no-constructed-context-values": "off",
+    "jsx-a11y/heading-has-content": "off"
   }
 }

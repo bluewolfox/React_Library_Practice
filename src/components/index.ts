@@ -6,3 +6,4 @@ export { Pagination } from './pagination/Pagination';
 export { Tree } from './tree/Tree';
 export { AutoTag } from './autoTag/AutoTag';
 export { Collapse } from './collapse/Collapse';
+export { Skeleton } from './skeleton/Skeleton';

@@ -11,6 +11,7 @@ import {
   TreePage,
   AutoTagPage,
   CollapsePage,
+  SkeletonPage,
 } from '../pages';
 
 export const Router: React.FC = (): JSX.Element => {
@@ -27,6 +28,7 @@ export const Router: React.FC = (): JSX.Element => {
           <Route path="tree" element={<TreePage />} />
           <Route path="autoTag" element={<AutoTagPage />} />
           <Route path="collapse" element={<CollapsePage />} />
+          <Route path="skeleton" element={<SkeletonPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

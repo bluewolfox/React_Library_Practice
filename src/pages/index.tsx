@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
-import { Alert, AutoTag, Collapse, DropMenu, Pagination, Slider, Table, Tree } from '../components';
+import { Alert, AutoTag, Collapse, DropMenu, Pagination, Skeleton, Slider, Table, Tree } from '../components';
 import { alertActions } from '../store/actions';
 import './style.scss';
 import Nav from '../json/Nav.json';
@@ -253,24 +253,15 @@ export const AutoTagPage: React.FC = (): JSX.Element => {
 export const CollapsePage: React.FC = (): JSX.Element => {
   const data = [
     {
-      head: {
-        msg: '저의 이름은',
-        uqKey: 'name',
-      },
+      head: { msg: '저의 이름은', uqKey: 'name' },
       body: '김원석 입니다.',
     },
     {
-      head: {
-        msg: '저의 나이는',
-        uqKey: 'age',
-      },
+      head: { msg: '저의 나이는', uqKey: 'age' },
       body: '올해 31세 입니다.',
     },
     {
-      head: {
-        msg: '저의 MBTI는',
-        uqKey: 'mbti',
-      },
+      head: { msg: '저의 MBTI는', uqKey: 'mbti' },
       body: 'ISTJ 입니다.',
     },
   ];
@@ -304,6 +295,31 @@ export const CollapsePage: React.FC = (): JSX.Element => {
             );
           }}
         </Collapse.Container>
+      </div>
+    </div>
+  );
+};
+
+export const SkeletonPage: React.FC = (): JSX.Element => {
+  const [loading] = useState(true);
+
+  useEffect(() => {
+    // setTimeout(() => setLoading(false), 10000);
+  }, []);
+
+  return (
+    <div className="page">
+      <div className="center">
+        <h1 className="page-title">Skeleton</h1>
+        <Skeleton loading={loading}>
+          <h2 className="title">안녕하세용</h2>
+          <div className="main-banner">메인배너입니다.</div>
+          <div className="sub-banner">서브배너입니다.</div>
+          <div className="main-banner">메인배너입니다.</div>
+          <h2 className="title">안녕하세용</h2>
+          <h2 className="title">안녕하세용</h2>
+          <div className="avatar" />
+        </Skeleton>
       </div>
     </div>
   );

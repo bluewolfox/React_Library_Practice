@@ -43,5 +43,10 @@
     "label": "Collapse",
     "path": "collapse",
     "nameKo": "아코디언"
+  },
+  {
+    "label": "Skeleton",
+    "path": "skeleton",
+    "nameKo": "스켈레톤"
   }
 ]

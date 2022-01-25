@@ -7,3 +7,4 @@ export { Tree } from './tree/Tree';
 export { AutoTag } from './autoTag/AutoTag';
 export { Collapse } from './collapse/Collapse';
 export { Skeleton } from './skeleton/Skeleton';
+export { SmoothWheel } from './wheel/SmoothWheel';

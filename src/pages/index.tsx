@@ -2,8 +2,18 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import classNames from 'classnames';
-import { Alert, AutoTag, Collapse, DropMenu, Pagination, Skeleton, Slider, Table, Tree } from '../components';
+import {
+  Alert,
+  AutoTag,
+  Collapse,
+  DropMenu,
+  Pagination,
+  Skeleton,
+  Slider,
+  SmoothWheel,
+  Table,
+  Tree,
+} from '../components';
 import { alertActions } from '../store/actions';
 import './style.scss';
 import Nav from '../json/Nav.json';
@@ -301,10 +311,10 @@ export const CollapsePage: React.FC = (): JSX.Element => {
 };
 
 export const SkeletonPage: React.FC = (): JSX.Element => {
-  const [loading] = useState(true);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // setTimeout(() => setLoading(false), 10000);
+    setTimeout(() => setLoading(false), 3000);
   }, []);
 
   return (
@@ -320,6 +330,19 @@ export const SkeletonPage: React.FC = (): JSX.Element => {
           <h2 className="title">안녕하세용</h2>
           <div className="avatar" />
         </Skeleton>
+      </div>
+    </div>
+  );
+};
+
+export const SmoothWheelPage: React.FC = (): JSX.Element => {
+  return (
+    <div className="page">
+      <div className="center">
+        <h1 className="page-title">SmoothWheel</h1>
+        <SmoothWheel styles={{ width: '100px' }}>
+          <div style={{ height: 10000, background: '#f1f1f1' }} />
+        </SmoothWheel>
       </div>
     </div>
   );

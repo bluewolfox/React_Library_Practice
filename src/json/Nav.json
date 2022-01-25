@@ -48,5 +48,10 @@
     "label": "Skeleton",
     "path": "skeleton",
     "nameKo": "스켈레톤"
+  },
+  {
+    "label": "SmoothWheel",
+    "path": "smoothWheel",
+    "nameKo": "부드러운 스크롤링"
   }
 ]

@@ -25,10 +25,11 @@ export const SmoothWheel: React.FC<{ children: JSX.Element; styles?: React.CSSPr
       return e.wheelDelta / 120; // IE,Safari,Chrome
     }
 
-    const requestFrame = (function () {
+    const requestFrame = (() => {
       // requestAnimationFrame cross browser
       return (
         window.requestAnimationFrame ||
+        // eslint-disable-next-line func-names
         function (func) {
           window.setTimeout(func, 1000 / 50);
         }

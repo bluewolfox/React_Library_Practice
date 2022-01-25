@@ -13,6 +13,8 @@ import {
   CollapsePage,
   SkeletonPage,
   SmoothWheelPage,
+  ButtonPage,
+  ModalPage,
 } from '../pages';
 
 export const Router: React.FC = (): JSX.Element => {
@@ -31,6 +33,8 @@ export const Router: React.FC = (): JSX.Element => {
           <Route path="collapse" element={<CollapsePage />} />
           <Route path="skeleton" element={<SkeletonPage />} />
           <Route path="smoothWheel" element={<SmoothWheelPage />} />
+          <Route path="button" element={<ButtonPage />} />
+          <Route path="modal" element={<ModalPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

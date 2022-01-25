@@ -5,8 +5,10 @@ import { Link } from 'react-router-dom';
 import {
   Alert,
   AutoTag,
+  Button,
   Collapse,
   DropMenu,
+  Modal,
   Pagination,
   Skeleton,
   Slider,
@@ -311,11 +313,7 @@ export const CollapsePage: React.FC = (): JSX.Element => {
 };
 
 export const SkeletonPage: React.FC = (): JSX.Element => {
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    setTimeout(() => setLoading(false), 3000);
-  }, []);
+  const [loading] = useState(true);
 
   return (
     <div className="page">
@@ -340,9 +338,61 @@ export const SmoothWheelPage: React.FC = (): JSX.Element => {
     <div className="page">
       <div className="center">
         <h1 className="page-title">SmoothWheel</h1>
-        <SmoothWheel styles={{ width: '100px' }}>
+        <SmoothWheel styles={{ width: '500px' }}>
           <div style={{ height: 10000, background: '#f1f1f1' }} />
         </SmoothWheel>
+      </div>
+    </div>
+  );
+};
+
+export const ButtonPage: React.FC = (): JSX.Element => {
+  return (
+    <div className="page">
+      <div className="center">
+        <h1 className="page-title">Button</h1>
+        <Button onClick={() => alert('abc')}>김원석</Button>
+        <Button disabled>김원석</Button>
+        <Button loading>김원석</Button>
+        <Button className="abc">김원석</Button>
+      </div>
+    </div>
+  );
+};
+
+export const ModalPage: React.FC = (): JSX.Element => {
+  return (
+    <div className="page">
+      <div className="center">
+        <h1 className="page-title">Modal</h1>
+        <Modal content={({ closeHandler }) => <div>모달 샘플</div>}>
+          <Button className="abc">기본</Button>
+        </Modal>
+        <Modal
+          noBGClick
+          title="모달1"
+          content={({ closeHandler }) => (
+            <div>
+              모달1
+              <Modal
+                styles={{ width: '500px', height: 300 }}
+                title="모달2"
+                content={({ closeHandler }) => (
+                  <div>
+                    모달2
+                    <Modal styles={{ width: '300px', height: 200 }} title="모달3" content={() => <div>모달3</div>}>
+                      <Button>모달3</Button>
+                    </Modal>
+                  </div>
+                )}
+              >
+                <Button>모달2</Button>
+              </Modal>
+            </div>
+          )}
+        >
+          <Button>모달1</Button>
+        </Modal>
       </div>
     </div>
   );

@@ -1,0 +1,65 @@
+@import '/src/assets/scss/utils.scss';
+
+.blwf-button-wrapper {
+  width: 100px;
+  height: 35px;
+
+  .button-inner {
+    @include flex(center, center);
+    height: 100%;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    transition: border, background-color 0.2s;
+    border: 1px solid #eeeeee;
+
+    .contents {
+      font-size: 12px;
+    }
+
+    &:hover {
+      background-color: #eeeeee;
+      border-radius: 0;
+    }
+
+    .loading-img {
+      img {
+        width: 35px;
+        animation-name: spinner;
+        animation-duration: 1s;
+        animation-delay: 0;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+      }
+    }
+  }
+
+  &.disabled,
+  &.loading {
+    .button-inner {
+      cursor: default;
+
+      &:hover {
+        background-color: #f9f9f9;
+        border-radius: 4px;
+      }
+    }
+  }
+
+  &.disabled {
+    .button-inner {
+      .contents {
+        opacity: 0.4;
+      }
+    }
+  }
+}
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

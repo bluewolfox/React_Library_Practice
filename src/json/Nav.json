@@ -53,5 +53,15 @@
     "label": "SmoothWheel",
     "path": "smoothWheel",
     "nameKo": "부드러운 스크롤링"
+  },
+  {
+    "label": "Button",
+    "path": "button",
+    "nameKo": "버튼"
+  },
+  {
+    "label": "Modal",
+    "path": "modal",
+    "nameKo": "모달"
   }
 ]

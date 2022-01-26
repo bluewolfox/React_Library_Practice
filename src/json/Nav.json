@@ -63,5 +63,10 @@
     "label": "Modal",
     "path": "modal",
     "nameKo": "모달"
+  },
+  {
+    "label": "Input",
+    "path": "input",
+    "nameKo": "인풋"
   }
 ]

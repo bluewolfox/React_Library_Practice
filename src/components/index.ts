@@ -10,3 +10,5 @@ export { Skeleton } from './skeleton/Skeleton';
 export { SmoothWheel } from './wheel/SmoothWheel';
 export { Button } from './button/Button';
 export { Modal } from './modal/Modal';
+export { ModalLayout } from './modal/ModalLayout';
+export { Input } from './input/Input';

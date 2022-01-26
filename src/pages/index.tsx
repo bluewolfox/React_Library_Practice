@@ -8,7 +8,9 @@ import {
   Button,
   Collapse,
   DropMenu,
+  Input,
   Modal,
+  ModalLayout,
   Pagination,
   Skeleton,
   Slider,
@@ -365,34 +367,135 @@ export const ModalPage: React.FC = (): JSX.Element => {
     <div className="page">
       <div className="center">
         <h1 className="page-title">Modal</h1>
-        <Modal content={({ closeHandler }) => <div>모달 샘플</div>}>
+        <Modal content={({ closeHandler }) => <ModalLayout closeHandler={closeHandler}>모달샘플</ModalLayout>}>
           <Button className="abc">기본</Button>
         </Modal>
         <Modal
-          noBGClick
-          title="모달1"
-          content={({ closeHandler }) => (
-            <div>
-              모달1
-              <Modal
-                styles={{ width: '500px', height: 300 }}
-                title="모달2"
-                content={({ closeHandler }) => (
-                  <div>
-                    모달2
-                    <Modal styles={{ width: '300px', height: 200 }} title="모달3" content={() => <div>모달3</div>}>
-                      <Button>모달3</Button>
-                    </Modal>
-                  </div>
-                )}
-              >
-                <Button>모달2</Button>
-              </Modal>
-            </div>
-          )}
+          content={({ closeHandler }) => {
+            return (
+              <ModalLayout title="모달1" closeHandler={closeHandler}>
+                <Modal
+                  content={({ closeHandler }) => {
+                    return (
+                      <ModalLayout title="모달2" closeHandler={closeHandler} styles={{ width: '60%', height: 500 }}>
+                        <Modal
+                          content={({ closeHandler }) => {
+                            return (
+                              <ModalLayout
+                                title="모달3"
+                                closeHandler={closeHandler}
+                                styles={{ width: '40%', height: 400 }}
+                              >
+                                <Modal
+                                  content={({ closeHandler }) => (
+                                    <ModalLayout
+                                      title="모달4"
+                                      closeHandler={closeHandler}
+                                      styles={{ width: '30%', height: 300 }}
+                                    >
+                                      모달끝
+                                    </ModalLayout>
+                                  )}
+                                >
+                                  <Button>모달4</Button>
+                                </Modal>
+                              </ModalLayout>
+                            );
+                          }}
+                        >
+                          <Button>모달3</Button>
+                        </Modal>
+                      </ModalLayout>
+                    );
+                  }}
+                >
+                  <Button>모달2</Button>
+                </Modal>
+              </ModalLayout>
+            );
+          }}
         >
           <Button>모달1</Button>
         </Modal>
+        <Modal
+          content={({ closeHandler }) => (
+            <ModalLayout
+              closeHandler={closeHandler}
+              customHeader={<div onClick={closeHandler}>헤더</div>}
+              customFooter={<div onClick={closeHandler}>푸터</div>}
+            >
+              커스텀모달
+            </ModalLayout>
+          )}
+        >
+          <Button>모달 커스텀 헤더 푸터</Button>
+        </Modal>
+        <Modal
+          content={({ closeHandler }) => (
+            <ModalLayout
+              closeHandler={closeHandler}
+              bgProps={{
+                color: 'red',
+                opacity: 0.2,
+              }}
+            >
+              비쥐
+            </ModalLayout>
+          )}
+        >
+          <Button>백그라운드 자율성</Button>
+        </Modal>
+        <Modal
+          content={({ closeHandler }) => (
+            <ModalLayout closeHandler={closeHandler} bgProps={{ noBg: true }}>
+              노비쥐
+            </ModalLayout>
+          )}
+        >
+          <Button>백그라운드 없음</Button>
+        </Modal>
+        <Modal
+          content={({ closeHandler }) => (
+            <ModalLayout
+              closeHandler={closeHandler}
+              cancelHandler={() => alert('취소')}
+              confirmHandler={() => alert('확인')}
+            >
+              커스텀 핸들러
+            </ModalLayout>
+          )}
+        >
+          <Button>커스텀 핸들러</Button>
+        </Modal>
+        <Modal
+          content={({ closeHandler }) => (
+            <ModalLayout closeHandler={closeHandler} form>
+              FORM 이벤트
+            </ModalLayout>
+          )}
+        >
+          <Button>FORM</Button>
+        </Modal>
+        <Modal
+          content={({ closeHandler }) => (
+            <ModalLayout drag closeHandler={closeHandler} form>
+              드래그 모달
+            </ModalLayout>
+          )}
+        >
+          <Button>드래그 모달</Button>
+        </Modal>
+      </div>
+    </div>
+  );
+};
+
+export const InputPage: React.FC = (): JSX.Element => {
+  return (
+    <div className="page">
+      <div className="center">
+        <h1 className="page-title">Input</h1>
+        <Input />
       </div>
     </div>
   );

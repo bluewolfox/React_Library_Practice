@@ -1,21 +1,19 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import classNames from 'classnames';
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import './Modal.scss';
-import { ModalLayout } from './ModalLayout';
 
 interface Props {
   children: JSX.Element;
   content: (arg: { closeHandler: () => void }) => JSX.Element;
-  title?: string;
-  noBGClick?: boolean;
-  styles?: React.CSSProperties;
 }
-export const Modal: React.FC<Props> = ({ children, content, title, noBGClick, styles }): JSX.Element => {
+export const Modal: React.FC<Props> = ({ children, content }): JSX.Element => {
   const [toggle, setToggle] = useState(false);
   const Root = useMemo(() => document.getElementById('blwf-root'), []);
+
   const closeHandler = useCallback(() => setToggle(false), []);
+  const CONTENT = (() => content({ closeHandler }))();
 
   const CHILDREN = React.cloneElement(children, {
     className: classNames([children.props.className], 'blwf-target-controller'),
@@ -27,18 +25,7 @@ export const Modal: React.FC<Props> = ({ children, content, title, noBGClick, st
 
   return (
     <>
-      {toggle &&
-        createPortal(
-          <ModalLayout
-            toggle={toggle}
-            closeHandler={closeHandler}
-            content={content}
-            title={title}
-            noBGClick={noBGClick}
-            styles={styles}
-          />,
-          Root as HTMLDivElement
-        )}
+      {toggle && createPortal(CONTENT, Root as HTMLDivElement)}
       {CHILDREN}
     </>
   );

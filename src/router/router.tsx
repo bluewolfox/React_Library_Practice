@@ -15,6 +15,7 @@ import {
   SmoothWheelPage,
   ButtonPage,
   ModalPage,
+  InputPage,
 } from '../pages';
 
 export const Router: React.FC = (): JSX.Element => {
@@ -35,6 +36,7 @@ export const Router: React.FC = (): JSX.Element => {
           <Route path="smoothWheel" element={<SmoothWheelPage />} />
           <Route path="button" element={<ButtonPage />} />
           <Route path="modal" element={<ModalPage />} />
+          <Route path="input" element={<InputPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -16,6 +16,7 @@ import {
   ButtonPage,
   ModalPage,
   InputPage,
+  FullPage,
 } from '../pages';
 
 export const Router: React.FC = (): JSX.Element => {
@@ -37,6 +38,7 @@ export const Router: React.FC = (): JSX.Element => {
           <Route path="button" element={<ButtonPage />} />
           <Route path="modal" element={<ModalPage />} />
           <Route path="input" element={<InputPage />} />
+          <Route path="fullpage" element={<FullPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -12,6 +12,7 @@ import {
   Modal,
   ModalLayout,
   Pagination,
+  ReactFullPage,
   Skeleton,
   Slider,
   SmoothWheel,
@@ -496,6 +497,31 @@ export const InputPage: React.FC = (): JSX.Element => {
       <div className="center">
         <h1 className="page-title">Input</h1>
         <Input />
+      </div>
+    </div>
+  );
+};
+
+export const FullPage: React.FC = (): JSX.Element => {
+  const [show, setShow] = useState(false);
+
+  return (
+    <div className="page">
+      <div className="center">
+        <h1 className="page-title">FullPage</h1>
+        <Button onClick={() => setShow(true)}>풀페이지 보기</Button>
+        {show && (
+          <ReactFullPage>
+            <div className="basic">fullpage1</div>
+            <div className="basic">fullpage2</div>
+            <div className="basic">fullpage3</div>
+            <div className="basic">fullpage4</div>
+            <div className="basic">fullpage5</div>
+            <div className="basic" style={{ height: 200 }}>
+              <Button onClick={() => setShow(false)}>풀페이지 나가기</Button>
+            </div>
+          </ReactFullPage>
+        )}
       </div>
     </div>
   );

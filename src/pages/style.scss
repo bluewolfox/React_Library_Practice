@@ -24,3 +24,9 @@
     height: 250px;
   }
 }
+
+.basic {
+  @include flex(center, center);
+  font-size: 40px;
+  font-weight: bold;
+}

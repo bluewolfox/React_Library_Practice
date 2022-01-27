@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Button } from 'components';
 import { dragElement } from 'functions';
-import { useWindowResize } from 'hooks/useWindowResize';
+import { useWindowResize } from 'hooks';
 import React, { useEffect, useRef, useState } from 'react';
 
 interface Props {
@@ -41,6 +41,7 @@ export const ModalLayout: React.FC<Props> = ({
   drag,
 }): JSX.Element => {
   const { size: { height } } = useWindowResize(); // prettier-ignore
+
   const [modalHeight, setModalHeight] = useState(0);
   const WrapperRef = useRef<HTMLDivElement>(null);
   const ContentsRef = useRef<HTMLDivElement>(null);

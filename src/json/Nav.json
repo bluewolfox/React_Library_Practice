@@ -68,5 +68,10 @@
     "label": "Input",
     "path": "input",
     "nameKo": "인풋"
+  },
+  {
+    "label": "Fullpage",
+    "path": "fullpage",
+    "nameKo": "풀페이지"
   }
 ]

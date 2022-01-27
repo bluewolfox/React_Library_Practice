@@ -519,11 +519,13 @@ export const ExamplePage: React.FC = (): JSX.Element => {
   const navigage = useNavigate();
   return (
     <ReactFullPage>
-      <div className="basic">fullpage1</div>
-      <div className="basic">fullpage2</div>
-      <div className="basic">fullpage3</div>
-      <div className="basic">fullpage4</div>
-      <div className="basic">fullpage5</div>
+      <div className="basic" style={{ backgroundColor: '#f2f2f2' }}>
+        Fullpage 1
+      </div>
+      <div className="basic">Fullpage 2</div>
+      <div className="basic">Fullpage 3</div>
+      <div className="basic">Fullpage 4</div>
+      <div className="basic">Fullpage 5</div>
       <div className="basic" style={{ height: 200 }}>
         <Button onClick={() => navigage('/fullpage')}>풀페이지 나가기</Button>
       </div>

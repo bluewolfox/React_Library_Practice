@@ -30,9 +30,7 @@ export const ReactFullPage: React.FC<Props> = ({ children }): JSX.Element => {
       const target = Layout.childNodes[currentPageStatus.current] as HTMLElement;
       Layout.style.transform = `translate3d(0px, -${target.offsetTop}px, 0px)`;
       Layout.style.transition = `all 1000ms ease 0s`;
-
-      // Layout.scrollTo({ top: target.offsetTop, behavior: 'smooth' });
-    }, 66);
+    }, 100);
   };
 
   useEffect(() => {

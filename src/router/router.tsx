@@ -17,6 +17,7 @@ import {
   ModalPage,
   InputPage,
   FullPage,
+  ExamplePage,
 } from '../pages';
 
 export const Router: React.FC = (): JSX.Element => {
@@ -40,6 +41,7 @@ export const Router: React.FC = (): JSX.Element => {
           <Route path="input" element={<InputPage />} />
           <Route path="fullpage" element={<FullPage />} />
         </Route>
+        <Route path="fullpage/example" element={<ExamplePage />} />
       </Routes>
     </BrowserRouter>
   );

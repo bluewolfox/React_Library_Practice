@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import {
   Alert,
   AutoTag,
@@ -503,26 +503,30 @@ export const InputPage: React.FC = (): JSX.Element => {
 };
 
 export const FullPage: React.FC = (): JSX.Element => {
-  const [show, setShow] = useState(false);
+  const navigage = useNavigate();
 
   return (
     <div className="page">
       <div className="center">
         <h1 className="page-title">FullPage</h1>
-        <Button onClick={() => setShow(true)}>풀페이지 보기</Button>
-        {show && (
-          <ReactFullPage>
-            <div className="basic">fullpage1</div>
-            <div className="basic">fullpage2</div>
-            <div className="basic">fullpage3</div>
-            <div className="basic">fullpage4</div>
-            <div className="basic">fullpage5</div>
-            <div className="basic" style={{ height: 200 }}>
-              <Button onClick={() => setShow(false)}>풀페이지 나가기</Button>
-            </div>
-          </ReactFullPage>
-        )}
+        <Button onClick={() => navigage('/fullpage/example')}>풀페이지 보기</Button>
       </div>
     </div>
+  );
+};
+
+export const ExamplePage: React.FC = (): JSX.Element => {
+  const navigage = useNavigate();
+  return (
+    <ReactFullPage>
+      <div className="basic">fullpage1</div>
+      <div className="basic">fullpage2</div>
+      <div className="basic">fullpage3</div>
+      <div className="basic">fullpage4</div>
+      <div className="basic">fullpage5</div>
+      <div className="basic" style={{ height: 200 }}>
+        <Button onClick={() => navigage('/fullpage')}>풀페이지 나가기</Button>
+      </div>
+    </ReactFullPage>
   );
 };

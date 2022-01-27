@@ -13,3 +13,4 @@ export { Modal } from './modal/Modal';
 export { ModalLayout } from './modal/ModalLayout';
 export { Input } from './input/Input';
 export { ReactFullPage } from './fullpage/FullPage';
+export { Parallax } from './parallax/Parallax';

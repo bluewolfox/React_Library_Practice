@@ -1,22 +1,16 @@
 @import '/src/assets/scss/utils.scss';
 
-#blwf-modal__top__wrapper {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
-
 .blwf-modal-layout-wrapper {
   width: 100%;
   height: 100%;
-  position: absolute;
+  position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-  @include flex(center, center);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   z-index: 3000;
   animation-name: opacity;
   animation-duration: 0.1s;
@@ -32,6 +26,7 @@
     position: relative;
     z-index: 1;
     border-radius: 5px;
+    overflow: hidden;
 
     .modal-header-wrapper {
       height: 50px;
@@ -41,7 +36,9 @@
       .header__inner {
         padding: 0 20px;
         height: inherit;
-        @include flex(space-between, center);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
 
         .modal-title {
           font-size: 14px;
@@ -59,7 +56,9 @@
         height: 80px;
         width: 100%;
         border-top: 1px solid #f1f1f1;
-        @include flex(center, center);
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
         .btn-modal {
           margin: 0 5px;

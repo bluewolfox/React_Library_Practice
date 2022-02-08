@@ -1,9 +1,3 @@
-@mixin flex($justify, $align) {
-  display: flex;
-  align-items: $align;
-  justify-content: $justify;
-}
-
 @mixin center {
   width: 100%;
   max-width: 1200px;

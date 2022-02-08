@@ -6,7 +6,9 @@
   height: 35px;
 
   .button-inner {
-    @include flex(center, center);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: 100%;
     border-radius: 4px;
     background-color: #f9f9f9;

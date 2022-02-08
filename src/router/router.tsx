@@ -18,6 +18,7 @@ import {
   InputPage,
   FullPage,
   ExamplePage,
+  DragDropPage,
 } from '../pages';
 
 export const Router: React.FC = (): JSX.Element => {
@@ -40,6 +41,7 @@ export const Router: React.FC = (): JSX.Element => {
           <Route path="modal" element={<ModalPage />} />
           <Route path="input" element={<InputPage />} />
           <Route path="fullpage" element={<FullPage />} />
+          <Route path="dragDrop" element={<DragDropPage />} />
         </Route>
         <Route path="fullpage/example" element={<ExamplePage />} />
       </Routes>

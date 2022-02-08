@@ -6,7 +6,9 @@
 
     .header-layout-wrapper {
       height: 50px;
-      @include flex(center, center);
+      display: flex;
+      align-items: center;
+      justify-content: center;
       gap: 20px;
       border-bottom: 1px solid #000;
 
@@ -46,7 +48,8 @@
       background-color: #111111;
       font-family: serif;
       font-size: 11px;
-      @include flex(flex-start, center);
+      display: flex;
+      align-items: center;
 
       .copyright {
         color: #bbc0c4;

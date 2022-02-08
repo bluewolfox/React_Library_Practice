@@ -30,7 +30,9 @@
     }
 
     .alert-item-inner {
-      @include flex(space-between, center);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       gap: 40px;
       padding: 3px 10px;
       background-color: #333333;

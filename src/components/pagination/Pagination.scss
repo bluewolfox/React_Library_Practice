@@ -1,7 +1,9 @@
 @import '/src/assets/scss/utils.scss';
 
 @mixin Item {
-  @include flex(center, center);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 30px;
   height: 30px;
   background-color: #e1e1e1;
@@ -38,11 +40,15 @@
 }
 
 .blwf-pag-layout-wrapper {
-  @include flex(center, center);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   gap: 4px;
 
   .unit-wrapper {
-    @include flex(center, center);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     gap: 4px;
 
     .unit-item {

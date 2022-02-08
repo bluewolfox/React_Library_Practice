@@ -10,6 +10,8 @@ interface Props {
   styles?: React.CSSProperties;
   customHeader?: JSX.Element;
   customFooter?: JSX.Element;
+  noHeader?: boolean;
+  noFooter?: boolean;
   children: any;
   bgProps?: Partial<{
     noBg: boolean;
@@ -39,6 +41,8 @@ export const ModalLayout: React.FC<Props> = ({
   cancelText,
   confirmText,
   drag,
+  noHeader,
+  noFooter,
 }): JSX.Element => {
   const { size: { height } } = useWindowResize(); // prettier-ignore
 
@@ -56,13 +60,15 @@ export const ModalLayout: React.FC<Props> = ({
 
   // 모달 높이 사이즈
   const getModalHeightSize = () => {
-    if (!ContentsRef.current || !HeaderRef.current || !FooterRef.current) return;
+    if (!HeaderRef.current && !FooterRef.current) return;
 
-    const contentsSize = ContentsRef.current.getBoundingClientRect();
-    const headerSize = HeaderRef.current.getBoundingClientRect();
-    const footerSize = FooterRef.current.getBoundingClientRect();
+    const contentsSize = (ContentsRef.current as HTMLDivElement).getBoundingClientRect();
+    let headerSize = 0;
+    let footerSize = 0;
+    if (HeaderRef.current) headerSize = HeaderRef.current.getBoundingClientRect().height;
+    if (FooterRef.current) footerSize = FooterRef.current.getBoundingClientRect().height;
 
-    const height = contentsSize.height - (headerSize.height + footerSize.height);
+    const height = contentsSize.height - (headerSize + footerSize);
 
     setModalHeight(height);
   };
@@ -89,20 +95,9 @@ export const ModalLayout: React.FC<Props> = ({
   };
 
   const Layout = {
-    Content: () => {
-      return (
-        <>
-          <Layout.Header />
-          <div className="modal-body-wrapper" style={{ height: modalHeight }}>
-            {children}
-          </div>
-          <Layout.Footer />
-        </>
-      );
-    },
-
     // 헤더 영역
     Header: () => {
+      if (noHeader) return <></>;
       if (CustomHeader)
         return (
           <div className="modal-header-wrapper" ref={HeaderRef}>
@@ -122,6 +117,7 @@ export const ModalLayout: React.FC<Props> = ({
     },
     // 푸터 영역
     Footer: () => {
+      if (noFooter) return <></>;
       if (CustomFooter)
         return (
           <div className="modal-footer-wrapper" ref={FooterRef}>
@@ -141,23 +137,16 @@ export const ModalLayout: React.FC<Props> = ({
         </div>
       );
     },
-    // 컨텐츠 영역
-    Contents: () => {
-      if (form)
-        return (
-          <form>
-            <Layout.Content />
-          </form>
-        );
-
-      return <Layout.Content />;
-    },
   };
 
   return (
     <div className="blwf-modal-layout-wrapper" ref={WrapperRef}>
       <div className="modal-layout-contents" ref={ContentsRef} style={{ ...styles }}>
-        <Layout.Contents />
+        <Layout.Header />
+        <div className="modal-body-wrapper" style={{ height: noHeader && noFooter ? 'auto' : modalHeight }}>
+          {children}
+        </div>
+        <Layout.Footer />
       </div>
       {!bgProps?.noBg && (
         <div

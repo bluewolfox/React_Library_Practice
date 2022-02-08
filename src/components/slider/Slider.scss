@@ -31,7 +31,9 @@
     width: 100%;
 
     .arrow-inner {
-      @include flex(space-between, center);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       line-height: 0;
 
       .arrow {
@@ -47,7 +49,9 @@
     padding-top: 10px;
 
     .dot-inner {
-      @include flex(center, center);
+      display: flex;
+      align-items: center;
+      justify-content: center;
       gap: 10px;
 
       .dot-item {

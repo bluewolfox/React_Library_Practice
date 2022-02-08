@@ -9,7 +9,9 @@
 
       .head-wrappper {
         .collapse-head {
-          @include flex(space-between, center);
+          align-items: center;
+          justify-content: space-between;
+          display: flex;
           cursor: pointer;
           font-size: 13px;
           height: 45px;

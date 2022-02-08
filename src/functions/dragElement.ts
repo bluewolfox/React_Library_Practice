@@ -18,7 +18,6 @@ export const dragElement = (elmnt: any, callbackFunc?: () => void): void => {
     pos2 = pos4 - e.clientY;
     pos3 = e.clientX;
     pos4 = e.clientY;
-    console.log(`${elmnt.offsetTop - pos2}px`);
 
     elmnt.style.top = `${elmnt.offsetTop - pos2}px`;
     elmnt.style.left = `${elmnt.offsetLeft - pos1}px`;

@@ -10,7 +10,9 @@
     }
 
     .tree-item {
-      @include flex(space-between, center);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       padding: 0 10px;
       height: 35px;
       border-bottom: 1px solid #f1f1f1;
@@ -30,7 +32,8 @@
       }
 
       .name-arrow-box {
-        @include flex(flex-start, center);
+        display: flex;
+        align-items: center;
         @include ellipsis;
 
         .item-arrow {

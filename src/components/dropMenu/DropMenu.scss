@@ -4,7 +4,8 @@
   position: absolute;
 
   .blwf-drop-contents {
-    @include flex(flex-start, center);
+    display: flex;
+    align-items: center;
     flex-wrap: wrap;
   }
 }

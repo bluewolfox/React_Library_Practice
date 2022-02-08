@@ -3,18 +3,20 @@
 .blwf-auto-tag-layout-wrapper {
   .tag-contet-box {
     background-color: #f9f9f9;
-    @include flex(flex-start, flex-start);
+    display: flex;
     padding: 10px 15px;
 
     .tags-container {
-      @include flex(flex-start, flex-start);
+      display: flex;
       flex-wrap: wrap;
       gap: 5px;
       margin-right: 10px;
       max-width: 100%;
 
       .egg-item {
-        @include flex(space-between, flex-start);
+        justify-content: space-between;
+        align-items: flex-start;
+        display: flex;
         background-color: skyblue;
         border-radius: 15px;
         padding: 5px 10px;

@@ -73,5 +73,10 @@
     "label": "Fullpage",
     "path": "fullpage",
     "nameKo": "풀페이지"
+  },
+  {
+    "label": "DragDrop",
+    "path": "dragDrop",
+    "nameKo": "드로그앤드랍"
   }
 ]

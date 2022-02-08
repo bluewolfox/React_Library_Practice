@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import classNames from 'classnames';
-import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import { createPortal } from 'react-dom';
 import './Modal.scss';
 
@@ -10,7 +10,7 @@ interface Props {
 }
 export const Modal: React.FC<Props> = ({ children, content }): JSX.Element => {
   const [toggle, setToggle] = useState(false);
-  const Root = useMemo(() => document.getElementById('blwf-root'), []);
+  const Root = useMemo(() => document.body.children[1], []);
 
   const closeHandler = useCallback(() => setToggle(false), []);
   const CONTENT = (() => content({ closeHandler }))();

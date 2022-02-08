@@ -7,6 +7,7 @@ import {
   AutoTag,
   Button,
   Collapse,
+  DragDrop,
   DropMenu,
   Input,
   Modal,
@@ -530,5 +531,16 @@ export const ExamplePage: React.FC = (): JSX.Element => {
         <Button onClick={() => navigage('/fullpage')}>풀페이지 나가기</Button>
       </div>
     </ReactFullPage>
+  );
+};
+
+export const DragDropPage: React.FC = (): JSX.Element => {
+  return (
+    <div className="page">
+      <div className="center">
+        <h1 className="page-title">DragDropPage</h1>
+        <DragDrop />
+      </div>
+    </div>
   );
 };

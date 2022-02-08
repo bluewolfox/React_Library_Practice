@@ -9,7 +9,9 @@
     height: 34px;
     border-radius: 3px;
     background-color: #ffffff;
-    @include flex(space-between, center);
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
     padding: 0 13px;
 
     .blwf-input {
@@ -33,15 +35,19 @@
       border-radius: 100%;
       background-color: #e5e5e5;
       cursor: pointer;
-      @include flex(center, center);
+      justify-content: center;
+      align-items: center;
+      display: flex;
 
       &::before {
         content: '×';
         font-size: 13px;
         width: 8px;
         height: 8px;
-        @include flex(center, center);
         margin-top: -2px;
+        justify-content: center;
+        align-items: center;
+        display: flex;
       }
     }
   }

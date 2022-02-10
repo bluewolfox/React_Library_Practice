@@ -11,6 +11,7 @@ export const DragDrop: React.FC<Props> = ({ className, onChange }): JSX.Element 
   const [files, setFiles] = useState<File[]>([]);
   const dropJoneRef = useRef<HTMLDivElement>(null);
   const dropJoneInnerRef = useRef<HTMLDivElement>(null);
+
   const mousemoveDetect = () => {
     const target = dropJoneRef.current as HTMLDivElement;
 
@@ -51,13 +52,44 @@ export const DragDrop: React.FC<Props> = ({ className, onChange }): JSX.Element 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dropJoneRef]);
 
+  //
+  const onHideFileClick = () => {
+    const inputEle = document.getElementById('file-selector');
+    if (inputEle) inputEle.click();
+  };
+
+  // input 셀렉트 파일
+  const onSelectFiles = (e: React.ChangeEvent) => {
+    const target = e.target as HTMLInputElement;
+    const { files } = target;
+
+    if (!files) {
+      if (onChange) onChange([]);
+      setFiles([]);
+      return;
+    }
+
+    const newState = [];
+    for (let i = 0; i < files.length; i++) {
+      const fileOne = files[i];
+      newState.push(fileOne);
+    }
+    if (onChange) onChange(newState);
+    setFiles(newState);
+  };
+
   return (
-    <div ref={dropJoneRef} className={classNames('drop-jone-layout-wrapper', [className])}>
+    <div ref={dropJoneRef} className={classNames('drop-jone-layout-wrapper', [className])} onClick={onHideFileClick}>
+      <input type="file" style={{ display: 'none' }} id="file-selector" multiple onChange={onSelectFiles} />
       <div ref={dropJoneInnerRef} className="drag-join-inner">
-        {!files.length && '드래그할 요소를 넣으세요.'}
+        {!files.length && '파일을 드래그하거나 네모를 클릭하세요.'}
         {!!files.length &&
           files.map((item) => {
-            return <div key={item.lastModified}>{item.name}</div>;
+            return (
+              <div className="file-item" key={item.lastModified}>
+                {item.name}
+              </div>
+            );
           })}
       </div>
     </div>

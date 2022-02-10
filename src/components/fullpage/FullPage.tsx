@@ -7,10 +7,17 @@ interface Props {
   children: JSX.Element[];
 }
 
-export const ReactFullPage: React.FC<Props> = ({ children }): JSX.Element => {
+export const BlwfFullPage: React.FC<Props> = ({ children }): JSX.Element => {
   const LayoutRef = useRef<HTMLDivElement>(null);
   const currentPageStatus = useRef(0);
   const debounce = useRef<any>(0);
+
+  const setPosition = () => {
+    const Layout = LayoutRef.current as HTMLDivElement;
+    const target = Layout.childNodes[currentPageStatus.current] as HTMLElement;
+    Layout.style.transform = `translate3d(0px, -${target.offsetTop}px, 0px)`;
+    Layout.style.transition = `all 1000ms ease 0s`;
+  };
 
   const wheelEvent = (e: WheelEvent) => {
     e.preventDefault();
@@ -27,9 +34,8 @@ export const ReactFullPage: React.FC<Props> = ({ children }): JSX.Element => {
         case 'up': if(currentPageStatus.current > 0) currentPageStatus.current -= 1; break;
         default: break;
       }
-      const target = Layout.childNodes[currentPageStatus.current] as HTMLElement;
-      Layout.style.transform = `translate3d(0px, -${target.offsetTop}px, 0px)`;
-      Layout.style.transition = `all 1000ms ease 0s`;
+
+      setPosition();
     }, 100);
   };
 
@@ -43,7 +49,6 @@ export const ReactFullPage: React.FC<Props> = ({ children }): JSX.Element => {
 
     return () => {
       Layout.removeEventListener('wheel', wheelEvent);
-      currentPageStatus.current = 0;
     };
 
     // eslint-disable-next-line react-hooks/exhaustive-deps

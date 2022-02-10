@@ -12,6 +12,6 @@ export { Button } from './button/Button';
 export { Modal } from './modal/Modal';
 export { ModalLayout } from './modal/ModalLayout';
 export { Input } from './input/Input';
-export { ReactFullPage } from './fullpage/FullPage';
+export { BlwfFullPage } from './fullpage/FullPage';
 export { Parallax } from './parallax/Parallax';
 export { DragDrop } from './dragDrop/DragDrop';

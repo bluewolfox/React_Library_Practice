@@ -19,5 +19,11 @@
 
   .drag-join-inner {
     font-size: 12px;
+
+    .file-item {
+      height: 25px;
+      display: flex;
+      align-items: center;
+    }
   }
 }

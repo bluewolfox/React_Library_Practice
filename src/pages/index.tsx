@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import {
   Alert,
   AutoTag,
+  BlwfFullPage,
   Button,
   Collapse,
   DragDrop,
@@ -13,7 +14,6 @@ import {
   Modal,
   ModalLayout,
   Pagination,
-  ReactFullPage,
   Skeleton,
   Slider,
   SmoothWheel,
@@ -519,18 +519,26 @@ export const FullPage: React.FC = (): JSX.Element => {
 export const ExamplePage: React.FC = (): JSX.Element => {
   const navigage = useNavigate();
   return (
-    <ReactFullPage>
+    <BlwfFullPage>
       <div className="basic" style={{ backgroundColor: '#f2f2f2' }}>
         Fullpage 1
       </div>
-      <div className="basic">Fullpage 2</div>
-      <div className="basic">Fullpage 3</div>
-      <div className="basic">Fullpage 4</div>
-      <div className="basic">Fullpage 5</div>
-      <div className="basic" style={{ height: 200 }}>
+      <div className="basic" style={{ backgroundColor: '#d6d6d6' }}>
+        Fullpage 2
+      </div>
+      <div className="basic" style={{ backgroundColor: '#937fbb' }}>
+        Fullpage 3
+      </div>
+      <div className="basic" style={{ backgroundColor: '#7fbb8c' }}>
+        Fullpage 4
+      </div>
+      <div className="basic" style={{ backgroundColor: '#7f91bb' }}>
+        Fullpage 5
+      </div>
+      <div className="basic" style={{ backgroundColor: '#bbb17f' }}>
         <Button onClick={() => navigage('/fullpage')}>풀페이지 나가기</Button>
       </div>
-    </ReactFullPage>
+    </BlwfFullPage>
   );
 };
 

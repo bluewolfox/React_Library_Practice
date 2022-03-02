@@ -355,10 +355,12 @@ export const ButtonPage: React.FC = (): JSX.Element => {
     <div className="page">
       <div className="center">
         <h1 className="page-title">Button</h1>
-        <Button onClick={() => alert('abc')}>김원석</Button>
-        <Button disabled>김원석</Button>
-        <Button loading>김원석</Button>
-        <Button className="abc">김원석</Button>
+        <div style={{ width: 400 }}>
+          <Button onClick={() => alert('abc')}>김원석</Button>
+          <Button disabled>김원석</Button>
+          <Button loading>김원석</Button>
+          <Button className="abc">김원석</Button>
+        </div>
       </div>
     </div>
   );

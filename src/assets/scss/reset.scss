@@ -1,3 +1,5 @@
+@import '/src/assets/scss/utils.scss';
+
 * {
   margin: 0;
   padding: 0;
@@ -128,4 +130,8 @@ li {
 
 .ReactVirtualized__Grid {
   overflow: overlay !important;
+}
+
+.center {
+  @include center;
 }
